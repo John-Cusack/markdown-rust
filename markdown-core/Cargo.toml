@@ -1,0 +1,16 @@
+[package]
+name = "markdown-rust-core"
+version = "3.11.2"
+edition = "2021"
+description = "Pure-Rust Markdown render core ported from Python-Markdown 3.11.2 (no Python dependency)"
+license = "BSD-3-Clause"
+repository = "https://github.com/John-Cusack/markdown-rust"
+homepage = "https://github.com/Python-Markdown/markdown"
+
+[dependencies]
+regex = "1"
+fancy-regex = "0.14"
+unicode-normalization = "0.1.26"
+
+[dev-dependencies]
+serde_json = "1.0.154"

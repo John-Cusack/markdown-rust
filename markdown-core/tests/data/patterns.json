@@ -1,0 +1,2314 @@
+{
+ "blk_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "blk_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "blk_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "blk_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "blk_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "codehilite_shebang": [
+  "\n(?:(?:^::+)|(?P<shebang>^[#]!))\n(?P<path>(?:/\\w+)*[/ ])?\n(?P<lang>[\\w#.+-]*)\n\\s*\n(hl_lines=(?P<quot>\"|')(?P<hl_lines>.*?)(?P=quot))?\n",
+  "x"
+ ],
+ "delim_star_dumb_bad": [
+  "\\*+",
+  ""
+ ],
+ "delim_star_dumb_boundary": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s\\*])\\*{1,}(?![\\s\\*])(?!$))|\n                (?P<end>(?<!^)(?<![\\s\\*])\\*{1,})|\n                (?P<start>\\*{1,}(?![\\s\\*])(?!$))\n                ",
+  "x"
+ ],
+ "delim_star_smart_bad": [
+  "\\*+",
+  ""
+ ],
+ "delim_star_smart_boundary": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s\\*])(?:(?<=_)|(?<![\\w\\*]))\\*{1,}(?:(?=_)|(?![\\w\\*]))(?![\\s\\*])(?!$))|\n                (?P<end>(?<!^)(?<![\\s\\*])\\*{1,}(?:(?=_)|(?![\\w\\*])))|\n                (?P<start>(?:(?<=_)|(?<![\\w\\*]))\\*{1,}(?![\\s\\*])(?!$))\n                ",
+  "x"
+ ],
+ "delim_us_dumb_bad": [
+  "_+",
+  ""
+ ],
+ "delim_us_dumb_boundary": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s_])_{1,}(?![\\s_])(?!$))|\n                (?P<end>(?<!^)(?<![\\s_])_{1,})|\n                (?P<start>_{1,}(?![\\s_])(?!$))\n                ",
+  "x"
+ ],
+ "delim_us_smart_bad": [
+  "_+",
+  ""
+ ],
+ "delim_us_smart_boundary": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s_])(?<![\\w_])_{1,}(?![\\w_])(?![\\s_])(?!$))|\n                (?P<end>(?<!^)(?<![\\s_])_{1,}(?![\\w_]))|\n                (?P<start>(?<![\\w_])_{1,}(?![\\s_])(?!$))\n                ",
+  "x"
+ ],
+ "ext_abbr_AbbrBlockprocessor_RE": [
+  "^[*]\\[(?P<abbr>[^\\\\]*?)\\][ ]?:[ ]*\\n?[ ]*(?P<title>.*)$",
+  "m"
+ ],
+ "ext_admonition_AdmonitionProcessor_RE": [
+  "(?:^|\\n)!!! ?([\\w\\-]+(?: +[\\w\\-]+)*)(?: +\"(.*?)\")? *(?:\\n|$)",
+  ""
+ ],
+ "ext_admonition_AdmonitionProcessor_RE_SPACES": [
+  "  +",
+  ""
+ ],
+ "ext_attr_list_AttrListTreeprocessor_BLOCK_RE": [
+  "\\n[ ]*\\{\\:?[ ]*([^\\}\\n ][^\\n]*)[ ]*\\}[ ]*$",
+  ""
+ ],
+ "ext_attr_list_AttrListTreeprocessor_HEADER_RE": [
+  "[ ]+\\{\\:?[ ]*([^\\}\\n ][^\\n]*)[ ]*\\}[ ]*$",
+  ""
+ ],
+ "ext_attr_list_AttrListTreeprocessor_INLINE_RE": [
+  "^\\{\\:?[ ]*([^\\}\\n ][^\\n]*)[ ]*\\}",
+  ""
+ ],
+ "ext_attr_list_AttrListTreeprocessor_NAME_RE": [
+  "[^A-Z_a-z\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u02ff\\u0370-\\u037d\\u037f-\\u1fff\\u200c-\\u200d\\u2070-\\u218f\\u2c00-\\u2fef\\u3001-\\ud7ff\\uf900-\\ufdcf\\ufdf0-\\ufffd\\:\\-\\.0-9\\u00b7\\u0300-\\u036f\\u203f-\\u2040]+",
+  ""
+ ],
+ "ext_attr_list_NAME_RE": [
+  "[^A-Z_a-z\\u00c0-\\u00d6\\u00d8-\\u00f6\\u00f8-\\u02ff\\u0370-\\u037d\\u037f-\\u1fff\\u200c-\\u200d\\u2070-\\u218f\\u2c00-\\u2fef\\u3001-\\ud7ff\\uf900-\\ufdcf\\ufdf0-\\ufffd\\:\\-\\.0-9\\u00b7\\u0300-\\u036f\\u203f-\\u2040]+",
+  ""
+ ],
+ "ext_def_list_DefListProcessor_NO_INDENT_RE": [
+  "^[ ]{0,3}[^ :]",
+  ""
+ ],
+ "ext_def_list_DefListProcessor_RE": [
+  "(^|\\n)[ ]{0,3}:[ ]{1,3}(.*?)(\\n|$)",
+  ""
+ ],
+ "ext_fenced_code_FencedBlockPreprocessor_FENCED_BLOCK_RE": [
+  "\n(?P<fence>^(?:~{3,}|`{3,}))[ ]*                          # opening fence\n((\\{(?P<attrs>[^\\n]*)\\})|                                # (optional {attrs} or\n(\\.?(?P<lang>[\\w#.+-]*)[ ]*)?                            # optional (.)lang\n(hl_lines=(?P<quot>\"|')(?P<hl_lines>.*?)(?P=quot)[ ]*)?) # optional hl_lines)\n\\n                                                       # newline (end of opening fence)\n(?P<code>.*?)(?<=\\n)                                     # the code block\n(?P=fence)[ ]*$                                          # closing fence\n",
+  "msx"
+ ],
+ "ext_footnotes_FootnoteBlockProcessor_RE": [
+  "^[ ]{0,3}\\[\\^([^\\]]*)\\]:[ ]*(.*)$",
+  "m"
+ ],
+ "ext_footnotes_RE_REFERENCE": [
+  "(?<!!)\\[\\^([^\\]]*)\\](?!\\s*:)",
+  ""
+ ],
+ "ext_footnotes_RE_REF_ID": [
+  "(fnref)(\\d+)",
+  ""
+ ],
+ "ext_legacy_attrs_ATTR_RE": [
+  "\\{@([^\\}]*)=([^\\}]*)}",
+  ""
+ ],
+ "ext_legacy_em_DelimiterProcessor_SPACE": [
+  "\\s",
+  ""
+ ],
+ "ext_md_in_html_RawHtmlPostprocessor_BLOCK_LEVEL_REGEX": [
+  "^<\\/?([^ >]+)",
+  ""
+ ],
+ "ext_md_in_html_blank_line_re": [
+  "^([ ]*\\n){2}",
+  ""
+ ],
+ "ext_meta_BEGIN_RE": [
+  "^-{3}(\\s.*)?",
+  ""
+ ],
+ "ext_meta_END_RE": [
+  "^(-{3}|\\.{3})(\\s.*)?",
+  ""
+ ],
+ "ext_meta_META_MORE_RE": [
+  "^[ ]{4,}(?P<value>.*)",
+  ""
+ ],
+ "ext_meta_META_RE": [
+  "^[ ]{0,3}(?P<key>[A-Za-z0-9_-]+):\\s*(?P<value>.*)",
+  ""
+ ],
+ "ext_tables_TableProcessor_RE_CODE_PIPES": [
+  "(?:(\\\\\\\\)|(\\\\`+)|(`+)|(\\\\\\|)|(\\|))",
+  ""
+ ],
+ "ext_tables_TableProcessor_RE_END_BORDER": [
+  "(?<!\\\\)(?:\\\\\\\\)*\\|$",
+  ""
+ ],
+ "ext_toc_HTML_PLACEHOLDER_RE": [
+  "\u0002wzxhzdk:([0-9]+)\u0003",
+  ""
+ ],
+ "ext_toc_IDCOUNT_RE": [
+  "^(.*)_([0-9]+)$",
+  ""
+ ],
+ "ext_toc_RE_AMP": [
+  "&(?!(?:\\#[0-9]+|\\#x[0-9a-f]+|[0-9a-z]+);)",
+  "i"
+ ],
+ "ext_toc_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_abbr_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_abbr_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_abbr_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_abbr_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_abbr_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_abbr_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_abbr_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_abbr_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_abbr_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_abbr_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_abbr_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_abbr_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_abbr_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_abbr_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_abbr_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_abbr_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_abbr_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_abbr_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_abbr_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_abbr_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_abbr_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_abbr_09_AbbrBlockprocessor_RE": [
+  "^[*]\\[(?P<abbr>[^\\\\]*?)\\][ ]?:[ ]*\\n?[ ]*(?P<title>.*)$",
+  "m"
+ ],
+ "extinst_abbr_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_abbr_10_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_abbr_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_abbr_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_abbr_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_abbr_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_admonition_00_AdmonitionProcessor_RE": [
+  "(?:^|\\n)!!! ?([\\w\\-]+(?: +[\\w\\-]+)*)(?: +\"(.*?)\")? *(?:\\n|$)",
+  ""
+ ],
+ "extinst_admonition_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_admonition_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_admonition_02_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_admonition_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_admonition_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_admonition_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_admonition_04_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_admonition_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_admonition_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_admonition_05_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_admonition_06_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_admonition_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_admonition_07_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_admonition_07_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_admonition_07_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_admonition_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_admonition_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_admonition_08_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_admonition_08_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_admonition_08_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_admonition_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_admonition_09_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_admonition_10_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_admonition_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_admonition_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_admonition_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_admonition_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_attr_list_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_attr_list_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_attr_list_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_attr_list_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_attr_list_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_attr_list_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_attr_list_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_attr_list_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_attr_list_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_attr_list_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_attr_list_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_attr_list_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_attr_list_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_attr_list_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_attr_list_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_attr_list_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_attr_list_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_attr_list_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_attr_list_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_attr_list_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_attr_list_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_attr_list_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_attr_list_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_attr_list_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_attr_list_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_attr_list_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_attr_list_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_codehilite_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_codehilite_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_codehilite_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_codehilite_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_codehilite_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_codehilite_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_codehilite_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_codehilite_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_codehilite_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_codehilite_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_codehilite_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_codehilite_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_codehilite_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_codehilite_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_codehilite_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_codehilite_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_codehilite_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_codehilite_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_codehilite_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_codehilite_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_codehilite_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_codehilite_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_codehilite_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_codehilite_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_codehilite_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_codehilite_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_codehilite_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_def_list_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_def_list_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_def_list_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_def_list_02_DefListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_def_list_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_def_list_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_def_list_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_def_list_04_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_def_list_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_def_list_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_def_list_05_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_def_list_06_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_def_list_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_def_list_07_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_def_list_07_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_def_list_07_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_def_list_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_def_list_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_def_list_08_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_def_list_08_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_def_list_08_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_def_list_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_def_list_09_DefListProcessor_RE": [
+  "(^|\\n)[ ]{0,3}:[ ]{1,3}(.*?)(\\n|$)",
+  ""
+ ],
+ "extinst_def_list_10_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_def_list_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_def_list_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_def_list_11_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_def_list_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_def_list_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_fenced_code_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_fenced_code_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_fenced_code_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_fenced_code_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_fenced_code_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_fenced_code_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_fenced_code_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_fenced_code_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_fenced_code_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_fenced_code_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_fenced_code_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_fenced_code_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_fenced_code_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_fenced_code_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_fenced_code_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_fenced_code_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_fenced_code_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_fenced_code_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_fenced_code_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_fenced_code_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_fenced_code_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_fenced_code_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_fenced_code_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_fenced_code_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_fenced_code_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_fenced_code_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_fenced_code_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_footnotes_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_footnotes_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_footnotes_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_footnotes_02_FootnoteInlineProcessor_compiled_re": [
+  "\\[\\^([^\\]]*)\\]",
+  "s"
+ ],
+ "extinst_footnotes_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_footnotes_03_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_footnotes_04_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_footnotes_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_footnotes_04_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_footnotes_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_footnotes_05_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_footnotes_06_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_footnotes_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_footnotes_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_footnotes_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_footnotes_07_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_footnotes_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_footnotes_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_footnotes_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_footnotes_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_footnotes_08_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_footnotes_09_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_footnotes_09_FootnoteBlockProcessor_RE": [
+  "^[ ]{0,3}\\[\\^([^\\]]*)\\]:[ ]*(.*)$",
+  "m"
+ ],
+ "extinst_footnotes_10_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_footnotes_10_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_footnotes_11_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_footnotes_12_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_footnotes_13_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_footnotes_14_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_legacy_attrs_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_legacy_attrs_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_legacy_attrs_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_legacy_attrs_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_legacy_attrs_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_legacy_attrs_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_legacy_attrs_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_legacy_attrs_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_attrs_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_legacy_attrs_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_attrs_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_attrs_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_attrs_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_legacy_attrs_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_attrs_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_legacy_attrs_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_legacy_attrs_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_legacy_attrs_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_legacy_attrs_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_legacy_attrs_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_legacy_attrs_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_legacy_attrs_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_legacy_em_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_legacy_em_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_legacy_em_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_legacy_em_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_em_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_legacy_em_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_legacy_em_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_em_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_em_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_legacy_em_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_legacy_em_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_em_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_em_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_legacy_em_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_em_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_legacy_em_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_legacy_em_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_em_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_legacy_em_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_legacy_em_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_legacy_em_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_legacy_em_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_legacy_em_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_legacy_em_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_legacy_em_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_legacy_em_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_legacy_em_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_md_in_html_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_md_in_html_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_md_in_html_02_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_md_in_html_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_md_in_html_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_md_in_html_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_md_in_html_04_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_md_in_html_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_md_in_html_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_md_in_html_05_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_md_in_html_06_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_md_in_html_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_md_in_html_07_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_md_in_html_07_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_md_in_html_07_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_md_in_html_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_md_in_html_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_md_in_html_08_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_md_in_html_08_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_md_in_html_08_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_md_in_html_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_md_in_html_09_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_md_in_html_10_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_md_in_html_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_md_in_html_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_md_in_html_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_md_in_html_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_meta_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_meta_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_meta_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_meta_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_meta_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_meta_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_meta_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_meta_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_meta_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_meta_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_meta_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_meta_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_meta_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_meta_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_meta_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_meta_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_meta_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_meta_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_meta_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_meta_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_meta_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_meta_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_meta_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_meta_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_meta_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_meta_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_meta_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_nl2br_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_nl2br_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_nl2br_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_nl2br_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_nl2br_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_nl2br_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_nl2br_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_nl2br_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_nl2br_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_nl2br_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_nl2br_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_nl2br_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_nl2br_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_nl2br_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_nl2br_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_nl2br_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_nl2br_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_nl2br_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_nl2br_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_nl2br_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_nl2br_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_nl2br_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_nl2br_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_nl2br_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_nl2br_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_nl2br_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_nl2br_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_nl2br_14_SubstituteTagInlineProcessor_compiled_re": [
+  "\\n",
+  "s"
+ ],
+ "extinst_sane_lists_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_sane_lists_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_sane_lists_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_sane_lists_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_sane_lists_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_sane_lists_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_sane_lists_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_sane_lists_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_sane_lists_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_sane_lists_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_sane_lists_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_sane_lists_06_SaneOListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.))[ ]+(.*)",
+  ""
+ ],
+ "extinst_sane_lists_06_SaneOListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_sane_lists_06_SaneOListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_sane_lists_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_sane_lists_07_SaneUListProcessor_CHILD_RE": [
+  "^[ ]{0,3}(([*+-]))[ ]+(.*)",
+  ""
+ ],
+ "extinst_sane_lists_07_SaneUListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_sane_lists_07_SaneUListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_sane_lists_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_sane_lists_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_sane_lists_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_sane_lists_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_sane_lists_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_sane_lists_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_sane_lists_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_sane_lists_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_sane_lists_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_smarty_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_smarty_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_smarty_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_smarty_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_smarty_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_smarty_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_smarty_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_smarty_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_smarty_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_smarty_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_smarty_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_smarty_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_smarty_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_smarty_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_smarty_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_smarty_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_smarty_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_smarty_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_smarty_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_smarty_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_smarty_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_smarty_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_smarty_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_smarty_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_smarty_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_smarty_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_smarty_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_tables_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_tables_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_tables_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_tables_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_tables_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_tables_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_tables_04_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_tables_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_tables_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_tables_05_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_tables_06_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_tables_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_tables_07_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_tables_07_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_tables_07_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_tables_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_tables_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_tables_08_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_tables_08_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_tables_08_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_tables_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_tables_09_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_tables_10_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_tables_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_tables_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_tables_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_tables_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_toc_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_toc_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_toc_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_toc_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_toc_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_toc_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_toc_03_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_toc_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_toc_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_toc_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_toc_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_toc_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_toc_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_toc_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_toc_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_toc_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_toc_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_toc_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_toc_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_toc_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_toc_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_toc_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_toc_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_toc_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_toc_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_toc_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_toc_13_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "extinst_wikilinks_00_BacktickInlineProcessor_compiled_re": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "extinst_wikilinks_01_EscapeInlineProcessor_compiled_re": [
+  "\\\\(.)",
+  "s"
+ ],
+ "extinst_wikilinks_01_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "extinst_wikilinks_02_ReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_wikilinks_02_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "extinst_wikilinks_03_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "extinst_wikilinks_03_LinkInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_wikilinks_04_ImageInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_wikilinks_04_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "extinst_wikilinks_05_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "extinst_wikilinks_05_ImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_wikilinks_06_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_wikilinks_06_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_wikilinks_06_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "extinst_wikilinks_06_ShortReferenceInlineProcessor_compiled_re": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "extinst_wikilinks_07_ShortImageReferenceInlineProcessor_compiled_re": [
+  "\\!\\[",
+  "s"
+ ],
+ "extinst_wikilinks_07_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "extinst_wikilinks_07_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "extinst_wikilinks_07_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "extinst_wikilinks_08_AutolinkInlineProcessor_compiled_re": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "extinst_wikilinks_08_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "extinst_wikilinks_09_AutomailInlineProcessor_compiled_re": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "extinst_wikilinks_09_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "extinst_wikilinks_10_SubstituteTagInlineProcessor_compiled_re": [
+  "  \\n",
+  "s"
+ ],
+ "extinst_wikilinks_11_HtmlInlineProcessor_compiled_re": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "extinst_wikilinks_12_HtmlInlineProcessor_compiled_re": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "extinst_wikilinks_13_WikiLinksInlineProcessor_compiled_re": [
+  "\\[\\[([\\w0-9_ -]+)\\]\\]",
+  "s"
+ ],
+ "extinst_wikilinks_14_DelimiterProcessor_compiled_re": [
+  "\\*|_",
+  "s"
+ ],
+ "html_blank_line_re": [
+  "^([ ]*\\n){2}",
+  ""
+ ],
+ "html_commentclose": [
+  "--!?>",
+  ""
+ ],
+ "html_inner_blank_line_re": [
+  "\\n[ \\t]*\\n",
+  ""
+ ],
+ "html_std_attrfind_tolerant": [
+  "\n  (\n    (?<=['\"\\t\\n\\r\\f /])[^\\t\\n\\r\\f />][^\\t\\n\\r\\f /=>]*  # attribute name\n   )\n  ([\\t\\n\\r\\f ]*=[\\t\\n\\r\\f ]*        # value indicator\n    ('[^']*'                        # LITA-enclosed value\n    |\"[^\"]*\"                        # LIT-enclosed value\n    |(?!['\"])[^>\\t\\n\\r\\f ]*         # bare value\n    )\n   )?\n  (?:[\\t\\n\\r\\f ]|/(?!>))*           # possibly followed by a space\n",
+  "x"
+ ],
+ "html_std_locatestarttagend_tolerant": [
+  "\n  <[a-zA-Z][^`\\t\\n\\r\\f />\\x00]*       # tag name <= added backtick here\n  (?:[\\s/]*                           # optional whitespace before attribute name\n    (?:(?<=['\"\\s/])[^`\\s/>][^\\s/=>]*  # attribute name <= added backtick here\n      (?:\\s*=+\\s*                     # value indicator\n        (?:'[^']*'                    # LITA-enclosed value\n          |\"[^\"]*\"                    # LIT-enclosed value\n          |(?!['\"])[^`>\\s]*           # bare value <= added backtick here\n         )\n         (?:\\s*,)*                    # possibly followed by a comma\n       )?(?:\\s|/(?!>))*\n     )*\n   )?\n  \\s*                                 # trailing whitespace\n",
+  "x"
+ ],
+ "html_std_locatetagend": [
+  "\n  [a-zA-Z][^`\\t\\n\\r\\f />]*           # tag name\n  [\\t\\n\\r\\f /]*                     # optional whitespace before attribute name\n  (?:(?<=['\"\\t\\n\\r\\f /])[^`\\t\\n\\r\\f />][^\\t\\n\\r\\f /=>]*  # attribute name\n    (?:=                            # value indicator\n      (?:'[^']*'                    # LITA-enclosed value\n        |\"[^\"]*\"                    # LIT-enclosed value\n        |(?!['\"])[^>\\t\\n\\r\\f ]*     # bare value\n       )\n     )?\n    [\\t\\n\\r\\f /]*                   # possibly followed by a space\n   )*\n   >?\n",
+  "x"
+ ],
+ "html_std_tagfind_tolerant": [
+  "([a-zA-Z][^\\t\\n\\r\\f />]*)(?:[\\t\\n\\r\\f ]|/(?!>))*",
+  ""
+ ],
+ "il_DelimiterProcessor_SPACE": [
+  "\\s",
+  ""
+ ],
+ "il_LinkInlineProcessor_RE_LINK": [
+  "\\(\\s*(?:(<[^<>]*>)\\s*(?:('[^']*'|\"[^\"]*\")\\s*)?\\))?",
+  "s"
+ ],
+ "il_LinkInlineProcessor_RE_TITLE_CLEAN": [
+  "\\s",
+  ""
+ ],
+ "il_ReferenceInlineProcessor_NEWLINE_CLEANUP_RE": [
+  "\\s+",
+  "m"
+ ],
+ "il_ReferenceInlineProcessor_RE_LINK": [
+  "\\s?\\[([^\\]]*)\\]",
+  "s"
+ ],
+ "inst_blk_BlockQuoteProcessor_RE": [
+  "(^|\\n)[ ]{0,3}>[ ]?(.*)",
+  ""
+ ],
+ "inst_blk_HRProcessor_SEARCH_RE": [
+  "^[ ]{0,3}(?=(?P<atomicgroup>(-+[ ]{0,2}){3,}|(_+[ ]{0,2}){3,}|(\\*+[ ]{0,2}){3,}))(?P=atomicgroup)[ ]*$",
+  "m"
+ ],
+ "inst_blk_HashHeaderProcessor_RE": [
+  "(?:^|\\n)(?P<level>#{1,6})(?P<header>(?:\\\\.|[^\\\\])*?)#*(?:\\n|$)",
+  ""
+ ],
+ "inst_blk_ListIndentProcessor_INDENT_RE": [
+  "^(([ ]{4})+)",
+  ""
+ ],
+ "inst_blk_OListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "inst_blk_OListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "inst_blk_OListProcessor_RE": [
+  "^[ ]{0,3}\\d+\\.[ ]+(.*)",
+  ""
+ ],
+ "inst_blk_ReferenceProcessor_RE": [
+  "^[ ]{0,3}\\[([^\\[\\]]*)\\]:[ ]*(?:\\n[ ]*)?([^\\s]+)[ ]*(?:\\n[ ]*)?(([\"\\'])(.*)\\4[ ]*|\\((.*)\\)[ ]*)?$",
+  "m"
+ ],
+ "inst_blk_SetextHeaderProcessor_RE": [
+  "^.*?\\n(?:=+|-+)[ ]*(\\n|$)",
+  "m"
+ ],
+ "inst_blk_UListProcessor_CHILD_RE": [
+  "^[ ]{0,3}((\\d+\\.)|[*+-])[ ]+(.*)",
+  ""
+ ],
+ "inst_blk_UListProcessor_INDENT_RE": [
+  "^[ ]{4,7}((\\d+\\.)|[*+-])[ ]+.*",
+  ""
+ ],
+ "inst_blk_UListProcessor_RE": [
+  "^[ ]{0,3}[*+-][ ]+(.*)",
+  ""
+ ],
+ "inst_delim_bad_star": [
+  "\\*+",
+  ""
+ ],
+ "inst_delim_bad_us": [
+  "_+",
+  ""
+ ],
+ "inst_delim_boundary_star": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s\\*])\\*{1,}(?![\\s\\*])(?!$))|\n                (?P<end>(?<!^)(?<![\\s\\*])\\*{1,})|\n                (?P<start>\\*{1,}(?![\\s\\*])(?!$))\n                ",
+  "x"
+ ],
+ "inst_delim_boundary_us": [
+  "(?x)\n                (?P<ambiguous>(?<!^)(?<![\\s_])(?<![\\w_])_{1,}(?![\\w_])(?![\\s_])(?!$))|\n                (?P<end>(?<!^)(?<![\\s_])_{1,}(?![\\w_]))|\n                (?P<start>(?<![\\w_])_{1,}(?![\\s_])(?!$))\n                ",
+  "x"
+ ],
+ "inst_il_00_BacktickInlineProcessor": [
+  "(?:(?<!\\\\)((?:\\\\{2})+)(?=`+)|(?<!\\\\)`)",
+  "s"
+ ],
+ "inst_il_01_EscapeInlineProcessor": [
+  "\\\\(.)",
+  "s"
+ ],
+ "inst_il_02_ReferenceInlineProcessor": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "inst_il_03_LinkInlineProcessor": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "inst_il_04_ImageInlineProcessor": [
+  "\\!\\[",
+  "s"
+ ],
+ "inst_il_05_ImageReferenceInlineProcessor": [
+  "\\!\\[",
+  "s"
+ ],
+ "inst_il_06_ShortReferenceInlineProcessor": [
+  "(?<!\\!)\\[",
+  "s"
+ ],
+ "inst_il_07_ShortImageReferenceInlineProcessor": [
+  "\\!\\[",
+  "s"
+ ],
+ "inst_il_08_AutolinkInlineProcessor": [
+  "<((?:[Ff]|[Hh][Tt])[Tt][Pp][Ss]?://[^<>]*)>",
+  "s"
+ ],
+ "inst_il_09_AutomailInlineProcessor": [
+  "<([^<> !]+@[^@<> ]+)>",
+  "s"
+ ],
+ "inst_il_10_SubstituteTagInlineProcessor": [
+  "  \\n",
+  "s"
+ ],
+ "inst_il_11_HtmlInlineProcessor": [
+  "(<(\\/?+[a-zA-Z][^\\s\"'<>@]*+(?:\\s+[^\\s\"'=<>]++(?:\\s*+=\\s*+(?:\"[^\"]*+\"|'[^']*+'|[^\\s\"'=<>]++))?+)*+\\s*+/?|!--(?:(?!<!--|-->).)*--|[?](?:(?!<[?]|[?]>).)*[?]|!\\[CDATA\\[(?:(?!<!\\[CDATA\\[|\\]\\]>).)*\\]\\])>)",
+  "s"
+ ],
+ "inst_il_12_HtmlInlineProcessor": [
+  "(&(?:\\#[0-9]+|\\#x[0-9a-fA-F]+|[a-zA-Z0-9]+);)",
+  "s"
+ ],
+ "inst_il_13_DelimiterProcessor": [
+  "\\*|_",
+  "s"
+ ],
+ "inst_pp_RawHtmlPostprocessor_BLOCK_LEVEL_REGEX": [
+  "^<\\/?([^ >]+)",
+  ""
+ ],
+ "inst_tp_UnescapeTreeprocessor": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "inst_util_HTML_PLACEHOLDER_RE": [
+  "\u0002wzxhzdk:([0-9]+)\u0003",
+  ""
+ ],
+ "inst_util_INLINE_PLACEHOLDER_RE": [
+  "\u0002klzzwxh:([0-9]+)\u0003",
+  ""
+ ],
+ "pp_RawHtmlPostprocessor_BLOCK_LEVEL_REGEX": [
+  "^<\\/?([^ >]+)",
+  ""
+ ],
+ "ser_RE_AMP": [
+  "&(?!(?:\\#[0-9]+|\\#x[0-9a-f]+|[0-9a-z]+);)",
+  "i"
+ ],
+ "smarty_00_SubstituteTextPattern": [
+  "(?<!-)---(?!-)",
+  "s"
+ ],
+ "smarty_01_SubstituteTextPattern": [
+  "(?<!-)--(?!-)",
+  "s"
+ ],
+ "smarty_02_SubstituteTextPattern": [
+  "^'(?=[!\"#\\$\\%'()*+,-.\\/:;<=>?\\@\\[\\\\\\]\\^_`{|}~]\\B)",
+  "s"
+ ],
+ "smarty_03_SubstituteTextPattern": [
+  "^\"(?=[!\"#\\$\\%'()*+,-.\\/:;<=>?\\@\\[\\\\\\]\\^_`{|}~]\\B)",
+  "s"
+ ],
+ "smarty_04_SubstituteTextPattern": [
+  "\"'(?=\\w)",
+  "s"
+ ],
+ "smarty_05_SubstituteTextPattern": [
+  "'\"(?=\\w)",
+  "s"
+ ],
+ "smarty_06_SubstituteTextPattern": [
+  "(?<=[^\\ \\t\\r\\n\\[\\{\\(\\-\\u0002\\u0003])\\'\"",
+  "s"
+ ],
+ "smarty_07_SubstituteTextPattern": [
+  "(?<=[^\\ \\t\\r\\n\\[\\{\\(\\-\\u0002\\u0003])\\\"'",
+  "s"
+ ],
+ "smarty_08_SubstituteTextPattern": [
+  "(?<!\\w)'(?=\\d{2}s)",
+  "s"
+ ],
+ "smarty_09_SubstituteTextPattern": [
+  "(\\s|&nbsp;|--|\u2013|\u2014|&[mn]dash;|&#8211;|&#8212;)'(?=\\w)",
+  "s"
+ ],
+ "smarty_10_SubstituteTextPattern": [
+  "(?<=[^\\ \\t\\r\\n\\[\\{\\(\\-\\u0002\\u0003])'(?!\\s|s\\b|\\d)",
+  "s"
+ ],
+ "smarty_11_SubstituteTextPattern": [
+  "'(\\s|s\\b)",
+  "s"
+ ],
+ "smarty_12_SubstituteTextPattern": [
+  "'",
+  "s"
+ ],
+ "smarty_13_SubstituteTextPattern": [
+  "(\\s|&nbsp;|--|\u2013|\u2014|&[mn]dash;|&#8211;|&#8212;)\"(?=\\w)",
+  "s"
+ ],
+ "smarty_14_SubstituteTextPattern": [
+  "\"(?=\\s)",
+  "s"
+ ],
+ "smarty_15_SubstituteTextPattern": [
+  "(?<=[^\\ \\t\\r\\n\\[\\{\\(\\-\\u0002\\u0003])\"",
+  "s"
+ ],
+ "smarty_16_SubstituteTextPattern": [
+  "\"",
+  "s"
+ ],
+ "smarty_17_SubstituteTextPattern": [
+  "(?<!\\.)\\.{3}(?!\\.)",
+  "s"
+ ],
+ "tp_UnescapeTreeprocessor_RE": [
+  "\u0002(\\d+)\u0003",
+  ""
+ ],
+ "util_HTML_PLACEHOLDER_RE": [
+  "\u0002wzxhzdk:([0-9]+)\u0003",
+  ""
+ ],
+ "util_INLINE_PLACEHOLDER_RE": [
+  "\u0002klzzwxh:([0-9]+)\u0003",
+  ""
+ ]
+}

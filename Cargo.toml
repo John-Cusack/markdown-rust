@@ -1,0 +1,19 @@
+[package]
+name = "markdown-rust"
+version = "3.11.2"
+edition = "2021"
+description = "Hot-unit port of Python-Markdown/markdown: markdown-core crate + PyO3 binding, BSD-3, upstream-attributed"
+license = "BSD-3-Clause"
+repository = "https://github.com/John-Cusack/markdown-rust"
+homepage = "https://github.com/Python-Markdown/markdown"
+
+[lib]
+name = "_markdown_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+markdown-rust-core = { path = "markdown-core", version = "3.11.2" }
+pyo3 = { version = "0.23", features = ["macros"] }
+
+[workspace]
+members = ["markdown-core"]

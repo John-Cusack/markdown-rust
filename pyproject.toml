@@ -1,0 +1,67 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "markdown-rust"
+version = "3.11.2"
+description = "Rust port of Python-Markdown/markdown: hot-unit render kernel in Rust, same API"
+authors = [{ name = "The Python Markdown Project" }]
+maintainers = [{ name = "John Cusack" }]
+requires-python = ">=3.11"
+readme = "README.md"
+license = "BSD-3-Clause"
+keywords = ["markdown", "rust"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Rust",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: Text Processing :: Markup",
+]
+
+[project.urls]
+[project.scripts]
+markdown_py = "markdown.__main__:run"
+
+[project.entry-points."markdown.extensions"]
+abbr = "markdown.extensions.abbr:AbbrExtension"
+admonition = "markdown.extensions.admonition:AdmonitionExtension"
+attr_list = "markdown.extensions.attr_list:AttrListExtension"
+codehilite = "markdown.extensions.codehilite:CodeHiliteExtension"
+def_list = "markdown.extensions.def_list:DefListExtension"
+extra = "markdown.extensions.extra:ExtraExtension"
+fenced_code = "markdown.extensions.fenced_code:FencedCodeExtension"
+footnotes = "markdown.extensions.footnotes:FootnoteExtension"
+md_in_html = "markdown.extensions.md_in_html:MarkdownInHtmlExtension"
+meta = "markdown.extensions.meta:MetaExtension"
+nl2br = "markdown.extensions.nl2br:Nl2BrExtension"
+sane_lists = "markdown.extensions.sane_lists:SaneListExtension"
+smarty = "markdown.extensions.smarty:SmartyExtension"
+tables = "markdown.extensions.tables:TableExtension"
+toc = "markdown.extensions.toc:TocExtension"
+wikilinks = "markdown.extensions.wikilinks:WikiLinkExtension"
+legacy_attrs = "markdown.extensions.legacy_attrs:LegacyAttrExtension"
+legacy_em = "markdown.extensions.legacy_em:LegacyEmExtension"
+
+
+[tool.maturin]
+module-name = "markdown._markdown_rs"
+bindings = "pyo3"
+features = ["pyo3/extension-module"]
+# The reusable Rust core ships inside the sdist as a path dependency
+# (verified by release-prep: the sdist rebuild test builds the wheel from
+# the unpacked sdist with no network checkout).
+sdist-include = ["markdown-core/**/*", "NOTICE", "release.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,12 @@
+markdown-rust incorporates a Rust implementation of the Markdown rendering
+behavior described by the upstream project below. The pure-Python fallback
+(`markdown/`, except `_bridge.py` and the marked hooks in `core.py`) is a
+byte-identical copy of the upstream 3.11.2 `markdown` package, used when the
+Rust extension is unavailable or the render is outside the kernel's exact
+domain (and as the correctness oracle for the equivalence suite):
+
+  Python-Markdown/markdown — https://github.com/Python-Markdown/markdown
+  Copyright 2007-2023 The Python Markdown Project (v. 1.7 and later)
+  Copyright 2004, 2005, 2006 Yuri Takhteyev (v. 0.2-1.6b)
+  Copyright 2004 Manfred Stienstra (the original version)
+  BSD-3-Clause (see LICENSE)
